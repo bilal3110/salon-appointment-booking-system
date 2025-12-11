@@ -16,7 +16,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
                                         <p class="mb-0 text-muted-custom">Total Services</p>
-                                        <h3 class="mb-0">10</h3>
+                                        <h3 class="mb-0">{{$servicesCount}}</h3>
                                     </div>
                                     <i class="fas fa-box me-2 stat-icon"></i>
                                 </div>
@@ -27,7 +27,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
                                         <p class="mb-0 text-muted-custom">Total Staff</p>
-                                        <h3 class="mb-0">4</h3>
+                                        <h3 class="mb-0">{{$staffCount}}</h3>
                                     </div>
                                     <i class="fas fa-user-plus stat-icon"></i>
                                 </div>
@@ -38,7 +38,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div>
                                         <p class="mb-0 text-muted-custom">Pending Bookings</p>
-                                        <h3 class="mb-0">56</h3>
+                                        <h3 class="mb-0">{{$pendingBookingsCount}}</h3>
                                     </div>
                                     <i class="fas fa-chart-line me-2 stat-icon"></i>
                                 </div>

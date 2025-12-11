@@ -1,6 +1,5 @@
 const $ = (id) => document.getElementById(id);
 
-// Header scroll effect
 window.addEventListener("scroll", () => {
   const header = document.querySelector("header");
   window.scrollY > 50
@@ -8,7 +7,6 @@ window.addEventListener("scroll", () => {
     : header.classList.remove("scrolled");
 });
 
-// Burger Menu Toggle
 const menuToggle = document.getElementById("menuToggle");
 const mobileNav = document.getElementById("mobileNav");
 const overlay = document.getElementById("overlay");
@@ -24,35 +22,84 @@ function toggleMenu() {
 menuToggle.addEventListener("click", toggleMenu);
 overlay.addEventListener("click", toggleMenu);
 
-// Close menu when clicking on nav links
 navLinks.forEach((link) => {
   link.addEventListener("click", () => {
     toggleMenu();
   });
 });
 
-// Close menu on window resize if it's open and screen becomes larger
 window.addEventListener("resize", () => {
   if (window.innerWidth > 768 && mobileNav.classList.contains("active")) {
     toggleMenu();
   }
 });
-const filterBtns = document.querySelectorAll(".filter-btn");
-const serviceCards = document.querySelectorAll(".service-card");
 
-filterBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    filterBtns.forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
+//Service API Render
+async function getServices() {
+  try {
+    const res = await fetch("/api/services");
+    if (!res.ok) throw new Error("Network response was not ok");
+    const services = await res.json();
+    console.log(services);
+    return services;
+  } catch (error) {
+    console.error("Error fetching services:", error);
+    return [];
+  }
+}
 
-    const category = btn.dataset.category;
+function renderServices(services) {
+  const servicesContainer = document.getElementById("servicesContainer");
 
-    serviceCards.forEach((card) => {
-      card.style.display = card.classList.contains(category) ? "block" : "none";
+  // Clear existing content
+  servicesContainer.innerHTML = '';
+
+  // Map services to HTML
+  services.forEach(service => {
+    const serviceCard = document.createElement('div');
+    serviceCard.className = `service-card ${service.service_type}`;
+    serviceCard.innerHTML = `
+      <h3 class="service-title">${service.service_name}</h3>
+      <p class="service-description">
+        ${service.description}
+      </p>
+      <p class="service-price">PKR ${service.price}</p>
+      <a href="booking.html" class="service-cta">Book Appointment</a>
+    `;
+    servicesContainer.appendChild(serviceCard);
+  });
+
+  // Reinitialize filter functionality after rendering
+  initializeFilters();
+}
+
+function initializeFilters() {
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const serviceCards = document.querySelectorAll(".service-card");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const category = btn.dataset.category;
+
+      serviceCards.forEach((card) => {
+        if (category === "all") {
+          card.style.display = "block";
+        } else {
+          card.style.display = card.classList.contains(category) ? "block" : "none";
+        }
+      });
     });
   });
-});
+}
 
+document.addEventListener('DOMContentLoaded', () => {
+  getServices().then((services) => {
+    renderServices(services);
+  });
+});
 const testimonials = [
   {
     text:

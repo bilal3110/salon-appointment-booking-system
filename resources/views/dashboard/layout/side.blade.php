@@ -9,7 +9,7 @@
                 <a href="{{route('dashboard.staff')}}" class="list-group-item list-group-item-action">
                     <i class="fas fa-users me-2"></i> Staff
                 </a>
-                <a href="#" class="list-group-item list-group-item-action">
+                <a href="{{route('dashboard.bookings')}}" class="list-group-item list-group-item-action">
                     <i class="fas fa-chart-line me-2"></i> Bookings
                 </a>
                 <a href="{{route('dashboard.services')}}" class="list-group-item list-group-item-action">
@@ -22,7 +22,7 @@
                 <a href="#" class="list-group-item list-group-item-action">
                     <i class="fas fa-cog me-2"></i> Settings
                 </a>
-                <a href="#" class="list-group-item list-group-item-action mt-auto">
+                <a href="" class="list-group-item list-group-item-action mt-auto" id="logout-button">
                     <i class="fas fa-sign-out-alt me-2"></i> Logout
                 </a>
             </div>

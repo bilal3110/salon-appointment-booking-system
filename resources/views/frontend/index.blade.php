@@ -17,13 +17,14 @@
       <h2 class="section-title">Our Services</h2>
 
       <div class="filter-buttons">
-        <button class="filter-btn active" data-category="men">Men</button>
+          <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="men">Men</button>
         <button class="filter-btn" data-category="women">Women</button>
       </div>
 
-      <div class="services-container">
+      <div class="services-container" id="servicesContainer">
         <!-- Men Services -->
-        <div class="service-card men">
+        {{-- <div class="service-card men">
           <h3 class="service-title">The Shelby Cut</h3>
           <p class="service-description">
             A precision cut befitting a gentleman of distinction. Sharp lines,
@@ -112,7 +113,7 @@
           </p>
           <p class="service-price">PKR 23,000</p>
           <a href="" class="service-cta">Book Appointment</a>
-        </div>
+        </div> --}}
       </div>
     </div>
 

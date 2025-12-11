@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +21,7 @@ Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
 Route::get('/booking',[FrontendController::class,'booking'])->name('frontend.booking');
 
 // Dashboard Route
+Route::middleware(['auth'])->group(function(){
 Route::get('/admin-panel',[DashboardController::class,'index'])->name('dashboard.index');
 Route::get('/admin-panel/services',[DashboardController::class,'servicePage'])->name('dashboard.services');
 Route::get('/admin-panel/services/create',[DashboardController::class,'createServicePage'])->name('dashboard.services.create');
@@ -30,3 +32,10 @@ Route::get('/admin-panel/users/{id}/edit',[DashboardController::class,'editUserP
 Route::get('/admin-panel/staff',[DashboardController::class,'addStaffPage'])->name('dashboard.staff');
 Route::get('/admin-panel/staff/{id}/view',[DashboardController::class,'viewStaffPage'])->name('dashboard.staff.view');
 Route::get('/admin-panel/staff/create',[DashboardController::class,'createStaffPage'])->name('dashboard.staff.create');
+Route::get('/admin-panel/bookings',[DashboardController::class,'getBookingsPage'])->name('dashboard.bookings');
+});
+
+Route::get('/admin-panel/login',[DashboardController::class,'loginPage'])->name('dashboard.login');
+
+Route::post('/api/login', [AuthController::class, 'login'])->name('api.login');
+Route::post('/api/logout', [AuthController::class, 'logout'])->name('api.logout')->middleware('auth');

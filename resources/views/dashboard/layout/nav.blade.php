@@ -23,7 +23,8 @@
                                     <li>
                                         <hr class="dropdown-divider" style="border-color: var(--border);">
                                     </li>
-                                    <li><a class="dropdown-item" href="#" style="color: var(--text);">Logout</a>
+                                    <li>
+                                        <a class="dropdown-item" id="logout-button" href="" style="color: var(--text);">Logout</a>
                                     </li>
                                 </ul>
                             </li>

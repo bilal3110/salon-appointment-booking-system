@@ -11,7 +11,7 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::with(['staff.user', 'service'])->get();
+        $bookings = Booking::with(['staff.user', 'service'])->latest()->get();
         return response()->json($bookings);
     }
 
@@ -108,5 +108,17 @@ class BookingController extends Controller
         $booking->status = 'canceled';
         $booking->save();
         return response()->json(['message' => 'Booking canceled successfully', 'booking' => $booking]);
+    }
+
+    public function getStaffByService(Service $service)
+    {
+        $staff = $service->staff()->with('user')->get()->map(function ($s) {
+            return [
+                'id' => $s->id,
+                'name' => $s->user->name,
+            ];
+        });
+
+        return response()->json($staff);
     }
 }

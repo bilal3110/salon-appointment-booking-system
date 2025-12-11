@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Booking;
 use App\Models\Service;
+use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,7 +12,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index');
+        $servicesCount = Service::count();
+        $staffCount = Staff::count();
+        $pendingBookingsCount = Booking::where('status', 'pending')->count();
+        return view('dashboard.index',compact('servicesCount','staffCount','pendingBookingsCount'));
     }
 
     public function servicePage()
@@ -58,5 +63,15 @@ class DashboardController extends Controller
         $users = User::where('type', 'staff')->get();
         $services = Service::all();
         return view('dashboard.staff.create',compact('users','services'));
+    }
+
+    public function getBookingsPage()
+    {
+        return view('dashboard.bookings.index');
+    }
+
+    public function loginPage()
+    {
+        return view('dashboard.login');
     }
 }

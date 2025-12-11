@@ -150,6 +150,43 @@ async function renderBookings() {
 
 renderBookings();
 
+async function renderAllBookings() {
+    const bookings = await getbookings();
+    const bookingsContainer = document.getElementById("booking-container");
+    bookingsContainer.innerHTML = "";
+    bookings.forEach((booking, index) => {
+        const bookingRow = document.createElement("tr");
+        let indexDisplay = index + 1;
+
+        let status = booking.status ? booking.status : "N/A";
+        let classStatus = "";
+        if (status === "pending") {
+            status = "Pending";
+            classStatus = "btn btn-sm btn-warning";
+        } else if (status === "confirmed") {
+            status = "Confirmed";
+            classStatus = "btn btn-sm btn-success";
+        } else if (status === "canceled") {
+            status = "Cancelled";
+            classStatus = "btn btn-sm btn-danger";
+        }
+
+        bookingRow.innerHTML = `
+            <th scope="row">${indexDisplay}</th>
+            <td>${booking.customer_name || "N/A"}</td>
+            <td>${booking.customer_contact || "N/A"}</td>
+            <td>${booking.service?.service_name || "N/A"}</td>
+            <td>PKR ${booking.service?.price || 0}</td>
+            <td>${booking.staff?.user?.name || "N/A"}</td>
+            <td>
+                <span class="${classStatus}">${status}</span>
+            </td>
+        `;
+        bookingsContainer.appendChild(bookingRow);
+    });
+}
+renderAllBookings();
+
 async function confirmBooking(bookingId) {
     try {
         const response = await fetch(`/api/bookings/${bookingId}/confirm`, {
@@ -492,9 +529,6 @@ async function renderStaff() {
                 staff.id
             } + '/view'">View</button></td>
             <td>
-                <button class="btn btn-sm btn-primary" onclick="editStaff(${
-                    staff.id
-                })">Edit</button>
                 <button class="btn btn-sm btn-danger" onclick="deleteStaff(${
                     staff.id
                 })">Delete</button>
@@ -629,5 +663,41 @@ if (createStaffForm) {
         } catch (error) {
             console.error("Error:", error);
         }
+    });
+}
+
+// LOGOUT
+async function logout() {
+    try {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+
+        const response = await fetch("/api/logout", {
+            method: "POST",
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Content-Type': 'application/json'
+            },
+            credentials: "include",
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("Logged out successfully!");
+            window.location.href = "/admin-panel/login";
+        } else {
+            alert(data.message || "Logout failed. Please try again.");
+        }
+    } catch (error) {
+        console.error("Error during logout:", error);
+        alert("An error occurred. Please try again.");
+    }
+}
+
+const logoutButton = document.getElementById("logout-button");
+if (logoutButton) {
+    logoutButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        logout();
     });
 }

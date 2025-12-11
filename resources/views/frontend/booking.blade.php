@@ -10,7 +10,7 @@
                 <p>Select your preferred service, staff, and time</p>
             </div>
 
-            <form action="" method="post">
+            <form action="" id="bookingForm">
                 <div class="booking-grid">
                     <div class="booking-section full-width">
                         <h2 class="section-title">Your Information</h2>
@@ -45,7 +45,7 @@
                             <select class="form-select" id="serviceSelect">
                                 <option value="">Choose a service</option>
 
-                                <!-- Men Services -->
+                                {{-- <!-- Men Services -->
                                 <option value="shelby_cut" data-price="1500">
                                     The Shelby Cut - PKR 1,500
                                 </option>
@@ -74,7 +74,7 @@
                                 </option>
                                 <option value="private_hour" data-price="23000">
                                     The Private Hour - PKR 23,000
-                                </option>
+                                </option> --}}
                             </select>
                         </div>
 
@@ -82,11 +82,11 @@
                             <label class="form-label">Staff Member</label>
                             <select class="form-select" id="staffSelect">
                                 <option value="">Choose a staff member</option>
-                                <option value="sarah">Sarah Johnson - Senior Stylist</option>
+                                {{-- <option value="sarah">Sarah Johnson - Senior Stylist</option>
                                 <option value="michael">Michael Chen - Master Barber</option>
                                 <option value="emma">Emma Davis - Color Specialist</option>
                                 <option value="james">James Wilson - Nail Technician</option>
-                                <option value="olivia">Olivia Martinez - Esthetician</option>
+                                <option value="olivia">Olivia Martinez - Esthetician</option> --}}
                             </select>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                             Confirm Booking
                         </button>
                         <p class="confirmation-text">
-                            You'll receive a confirmation email once your booking is confirmed
+                            You'll receive a confirmation call soon after booking.
                         </p>
                     </div>
                 </div>
