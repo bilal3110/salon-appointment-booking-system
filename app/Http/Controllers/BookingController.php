@@ -6,12 +6,21 @@ use App\Models\Booking;
 use App\Models\Service;
 use App\Models\Staff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
     public function index()
     {
+        if(Auth::guard()->user()->type == 'admin'){
         $bookings = Booking::with(['staff.user', 'service'])->latest()->get();
+        } else {
+            $staff = Staff::where('user_id', Auth::guard()->user()->id)->first();
+            $bookings = Booking::with(['staff.user', 'service'])
+                ->where('staff_id', $staff->id)
+                ->latest()
+                ->get();
+        }
         return response()->json($bookings);
     }
 

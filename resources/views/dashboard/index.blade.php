@@ -9,42 +9,44 @@
                 @include('dashboard.layout.nav')
 
                 <div class="container-fluid px-4 py-4">
+                    @if (Auth::guard()->user()->type == 'admin')
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-4">
+                                <div class="card card-custom p-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="mb-0 text-muted-custom">Total Services</p>
+                                            <h3 class="mb-0">{{ $servicesCount }}</h3>
+                                        </div>
+                                        <i class="fas fa-box me-2 stat-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card card-custom p-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="mb-0 text-muted-custom">Total Staff</p>
+                                            <h3 class="mb-0">{{ $staffCount }}</h3>
+                                        </div>
+                                        <i class="fas fa-user-plus stat-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="card card-custom p-3">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="mb-0 text-muted-custom">Pending Bookings</p>
+                                            <h3 class="mb-0">{{ $pendingBookingsCount }}</h3>
+                                        </div>
+                                        <i class="fas fa-chart-line me-2 stat-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
 
-                    <div class="row g-4 mb-4">
-                        <div class="col-md-4">
-                            <div class="card card-custom p-3">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <p class="mb-0 text-muted-custom">Total Services</p>
-                                        <h3 class="mb-0">{{$servicesCount}}</h3>
-                                    </div>
-                                    <i class="fas fa-box me-2 stat-icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-custom p-3">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <p class="mb-0 text-muted-custom">Total Staff</p>
-                                        <h3 class="mb-0">{{$staffCount}}</h3>
-                                    </div>
-                                    <i class="fas fa-user-plus stat-icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-custom p-3">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <p class="mb-0 text-muted-custom">Pending Bookings</p>
-                                        <h3 class="mb-0">{{$pendingBookingsCount}}</h3>
-                                    </div>
-                                    <i class="fas fa-chart-line me-2 stat-icon"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="row" id="bookings-container">
                         <!-- Booking cards will be dynamically inserted here -->
