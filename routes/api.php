@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -53,4 +54,8 @@ Route::get('/bookings/{id}/confirm',[BookingController::class,'confirm'])->name(
 Route::get('/bookings/{id}/cancel',[BookingController::class,'cancel'])->name('bookings.cancel')->middleware('auth');
 Route::get('/staff-by-service/{service}', [BookingController::class, 'getStaffByService']);
 
+// Testimonial Routes
+Route::get('/testimonials', [TestimonialController::class, 'index'])->name('testimonials.index');
+Route::post('/testimonials', [TestimonialController::class, 'store'])->name('testimonials.store');
+Route::delete('/testimonials/{id}', [TestimonialController::class, 'delete'])->name('testimonials.delete')->middleware('auth');
 

@@ -16,4 +16,9 @@ class FrontendController extends Controller
         return view('frontend.booking');
     }
 
+    public function testimonial()
+    {
+        return view('frontend.testimonial');
+    }
+
 }

@@ -44,37 +44,6 @@
                             <label class="form-label">Service</label>
                             <select class="form-select" id="serviceSelect">
                                 <option value="">Choose a service</option>
-
-                                {{-- <!-- Men Services -->
-                                <option value="shelby_cut" data-price="1500">
-                                    The Shelby Cut - PKR 1,500
-                                </option>
-                                <option value="royal_shave" data-price="2000">
-                                    The Royal Shave - PKR 2,000
-                                </option>
-                                <option value="beard_sculpting" data-price="18000">
-                                    Beard Sculpting - PKR 18,000
-                                </option>
-
-                                <!-- Women Services -->
-                                <option value="grace_treatment" data-price="8000">
-                                    The Grace Treatment - PKR 8,000
-                                </option>
-                                <option value="pollys_polish" data-price="4000">
-                                    Polly's Polish - PKR 4,000
-                                </option>
-                                <option value="the_ada" data-price="12000">
-                                    The Ada - PKR 12,000
-                                </option>
-                                <option value="hair_scalp_revival" data-price="10000">
-                                    Hair & Scalp Revival - PKR 10,000
-                                </option>
-                                <option value="complete_affair" data-price="9500">
-                                    The Complete Affair - PKR 9,500
-                                </option>
-                                <option value="private_hour" data-price="23000">
-                                    The Private Hour - PKR 23,000
-                                </option> --}}
                             </select>
                         </div>
 
@@ -82,11 +51,6 @@
                             <label class="form-label">Staff Member</label>
                             <select class="form-select" id="staffSelect">
                                 <option value="">Choose a staff member</option>
-                                {{-- <option value="sarah">Sarah Johnson - Senior Stylist</option>
-                                <option value="michael">Michael Chen - Master Barber</option>
-                                <option value="emma">Emma Davis - Color Specialist</option>
-                                <option value="james">James Wilson - Nail Technician</option>
-                                <option value="olivia">Olivia Martinez - Esthetician</option> --}}
                             </select>
                         </div>
                     </div>

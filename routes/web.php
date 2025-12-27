@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 // Frontend Routes
 Route::get('/',[FrontendController::class,'index'])->name('frontend.index');
 Route::get('/booking',[FrontendController::class,'booking'])->name('frontend.booking');
+Route::get('/testimonial',[FrontendController::class,'testimonial'])->name('frontend.testimonial');
 
 // Dashboard Route
 Route::middleware(['auth'])->group(function(){
