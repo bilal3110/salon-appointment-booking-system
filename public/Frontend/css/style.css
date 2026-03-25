@@ -45,7 +45,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 10%;
+  padding: 10px 10%;
   background-color: transparent;
   z-index: 1000;
   transition: background-color 0.3s ease;
@@ -57,13 +57,13 @@ header.scrolled {
   opacity: 0.8;
 }
 
-.logo h1 {
+/* .logo h1 {
   color: var(--secondary);
   font-size: 1.8rem;
-}
+} */
 
 .logo {
-  width: 130px;
+  width: 100px;
 }
 
 .logo img {
