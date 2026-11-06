@@ -1,40 +1,74 @@
 @extends('dashboard.layout.main')
+
+@section('title', 'Services')
+@section('section-name', 'The House')
+@section('page-name', 'Services')
+
 @section('main-section')
 
-    <body>
-        <div class="d-flex" id="wrapper">
-            @include('dashboard.layout.side')
-            <div id="page-content-wrapper">
+    <div class="page-head">
+        <div>
+            <p class="eyebrow">The House</p>
+            <h1 class="page-title">Services</h1>
+            <p class="page-lede">
+                The treatments the establishment performs, what they cost, and which barbers can deliver them.
+            </p>
+        </div>
 
-                @include('dashboard.layout.nav')
-                <div class="row">
-                    <div class="col-12 p-5">
-                        <div class="card card-custom p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <h4 class="mb-4">The Services We Offer</h4>
-                                <a href="{{ route('dashboard.services.create') }}" class="btn btn-primary">Add New Service</a>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table table-custom table-hover align-middle">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#ID</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Type</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="services-container">
-                                        {{-- Services Data --}}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="page-head__actions">
+            <a href="{{ route('dashboard.services.create') }}" class="btn btn--primary">
+                <svg class="icon" aria-hidden="true"><use href="#i-plus"></use></svg>
+                Add service
+            </a>
+        </div>
+    </div>
 
+    <section class="panel">
+        <div class="toolbar">
+            <div class="search">
+                <svg class="icon" aria-hidden="true"><use href="#i-search"></use></svg>
+                <input class="input" type="search" id="serviceSearch" placeholder="Search services…"
+                    aria-label="Search services" autocomplete="off">
+                <button type="button" class="search__clear" aria-label="Clear search">
+                    <svg class="icon icon--xs" aria-hidden="true"><use href="#i-x"></use></svg>
+                </button>
             </div>
+
+            <select class="select filter-select" id="serviceTypeFilter" aria-label="Filter by type">
+                <option value="">All types</option>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+            </select>
+
+            <div class="toolbar__spacer"></div>
+            <span class="toolbar__count" id="serviceCount">—</span>
         </div>
+
+        <div class="ledger-wrap">
+            <table class="ledger">
+                <thead>
+                    <tr>
+                        <th scope="col">Ref</th>
+                        <th scope="col">Service</th>
+                        <th scope="col">Type</th>
+                        <th scope="col" class="cell-num">Price</th>
+                        <th scope="col" class="cell-num">Barbers</th>
+                        <th scope="col" class="cell-num">Bookings</th>
+                        <th scope="col"><span class="text-smoke">Actions</span></th>
+                    </tr>
+                </thead>
+                <tbody id="servicesRows">
+                    <tr>
+                        <td colspan="7">
+                            <div class="loading-row">
+                                <span class="spinner"></span>
+                                Reading the service book
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    @endsection
+    </section>
+
+@endsection

@@ -18,6 +18,7 @@ class Booking extends Model
         'booking_date',
         'booking_time',
         'status',
+        'notes',
     ];
 
     public function staff(){

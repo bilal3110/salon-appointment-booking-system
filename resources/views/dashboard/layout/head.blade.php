@@ -4,10 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Garrison - Dashboard</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="robots" content="noindex, nofollow">
+    <title>@yield('title', 'Management Office') — The Garrison</title>
+
     <link rel="shortcut icon" href="{{ asset('Frontend/assets/icon.png') }}" type="image/x-icon" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('dashboard/css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+    />
+    <link rel="stylesheet" href="{{ asset('dashboard/css/admin.css') }}">
+
+    {{-- Marks the document as script-enabled so progressive enhancement stays predictable --}}
+    <script>
+        document.documentElement.classList.add('js');
+    </script>
 </head>
+
+<body class="adm" data-rail="expanded" data-drawer="closed">
+    @include('dashboard.layout.icons')

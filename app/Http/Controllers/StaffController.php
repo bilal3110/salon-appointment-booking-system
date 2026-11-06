@@ -11,7 +11,7 @@ class StaffController extends Controller
 {
     public function index()
     {
-        $staffMembers = Staff::with(['user', 'services'])->get();
+        $staffMembers = Staff::with(['user', 'services'])->withCount('bookings')->get();
         return response()->json($staffMembers);
     }
 

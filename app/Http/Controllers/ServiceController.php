@@ -9,7 +9,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        $services = Service::all();
+        $services = Service::with('staff')->withCount('bookings')->get();
         return response()->json($services);
     }
 
@@ -48,7 +48,7 @@ class ServiceController extends Controller
 
         return response()->json(['message' => 'Service updated successfully', 'service' => $service]);
     }
-    
+
     public function destroy($id)
     {
         $service = Service::findOrFail($id);

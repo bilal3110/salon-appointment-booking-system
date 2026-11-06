@@ -77,10 +77,10 @@ php artisan key:generate
    DB_PASSWORD=your_database_password
    ```
 
-### **7. Run Migrations**
-Run the database migrations to create the necessary tables:
+### **7. Create the Tables and Demo Data**
+Run migrations and seed the database with example services, staff, bookings, testimonials, and a demo admin account:
 ```bash
-php artisan migrate
+php artisan migrate --seed
 ```
 
 ### **8. Storage Link**
@@ -89,22 +89,13 @@ Link the storage directory to the public directory to enable file uploads:
 php artisan storage:link
 ```
 
-### **9. Create an Admin User**
-Since there is no default seeder, you can create your first admin user using Tinker:
-```bash
-php artisan tinker
-```
-Then run the following in the Tinker shell:
-```php
-\App\Models\User::create([
-    'name' => 'Admin User',
-    'email' => 'admin@example.com',
-    'password' => bcrypt('password'),
-    'type' => 'admin',
-]);
-```
+Demo admin login:
+- **Email:** `admin@salon.test`
+- **Password:** `password`
 
-### **10. Launch the Application**
+To add the demo records again later without clearing existing data, run `php artisan db:seed`.
+
+### **9. Launch the Application**
 Start the Laravel development server:
 ```bash
 php artisan serve

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 56" width="48" height="56">
+    <rect width="48" height="56" fill="#111111"/>
+    <path d="M24 4 L42 10 V30 C42 40 33 46.5 24 50.5 C15 46.5 6 40 6 30 V10 Z" fill="none" stroke="#C6A15B" stroke-width="2.2"/>
+    <path d="M24 8.5 L38 13.2 V30 C38 38 31 43.4 24 46.6 C17 43.4 10 38 10 30 V13.2 Z" fill="none" stroke="#C6A15B" stroke-width="0.9" opacity="0.6"/>
+    <text x="24" y="33.5" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="16" fill="#C6A15B" letter-spacing="1">TG</text>
+</svg>

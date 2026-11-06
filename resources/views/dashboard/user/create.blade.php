@@ -1,57 +1,126 @@
 @extends('dashboard.layout.main')
+
+@section('title', 'New Account')
+@section('section-name', 'The House')
+@section('page-name', 'New Account')
+
 @section('main-section')
 
-    <body>
-        <div class="d-flex" id="wrapper">
-            @include('dashboard.layout.side')
-            <div id="page-content-wrapper">
+    <div class="page-head">
+        <div>
+            <p class="eyebrow">The House</p>
+            <h1 class="page-title">New Account</h1>
+            <p class="page-lede">
+                Open a sign-in for a barber or another proprietor.
+            </p>
+        </div>
 
-                @include('dashboard.layout.nav')
-                <div class="row">
-                    <div class="col-12 p-5">
-                        <div class="card card-custom p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <h4 class="mb-4">Add New User Here</h4>
-                            </div>
-                            <div class="table-responsive">
-                                <form id="create-user-form">
-                                    <div class="mb-3">
-                                        <label for="user-name" class="form-label">User Name</label>
-                                        <input type="text" class="form-input" id="user-name" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="user-role" class="form-label">User Role</label>
-                                        <select class="form-select" id="user-type" required>
-                                            <option value="" selected disabled>Select Role</option>
-                                            <option value="admin">Admin</option>
-                                            <option value="staff">Staff</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="user-phone" class="form-label">User Phone</label>
-                                        <input type="text" class="form-input" id="user-phone" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="user-email" class="form-label">User Email</label>
-                                        <input type="email" class="form-input" id="user-email" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="user-password" class="form-label">User Password</label>
-                                        <input type="password" class="form-input" id="user-password" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="user-password-confirmation" class="form-label">Confirm Password</label>
-                                        <input type="password" class="form-input" id="password_confirmation"
-                                            name="password_confirmation" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Create User</button>
-                                </form>
-                            </div>
+        <div class="page-head__actions">
+            <a href="{{ route('dashboard.users') }}" class="btn btn--ghost">
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"></use></svg>
+                Back to accounts
+            </a>
+        </div>
+    </div>
+
+    <div class="grid-2--even grid-2">
+
+        <section class="panel">
+            <div class="panel__head">
+                <div>
+                    <h2 class="panel__title">Account Details</h2>
+                    <p class="panel__sub">The person who will sign in</p>
+                </div>
+            </div>
+
+            <div class="panel__body">
+                <form id="createUserForm" novalidate>
+                    <div class="field">
+                        <label class="field__label" for="userName">Full name <span class="req">*</span></label>
+                        <input class="input" type="text" id="userName" name="name" placeholder="Ava Bennett"
+                            required autocomplete="off">
+                        <p class="field__error"></p>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field">
+                            <label class="field__label" for="userType">Role <span class="req">*</span></label>
+                            <select class="select" id="userType" name="type" required>
+                                <option value="">Select role</option>
+                                <option value="admin">Proprietor</option>
+                                <option value="staff">Barber</option>
+                            </select>
+                            <p class="field__hint">Proprietors see the whole house. Barbers see their own chair.</p>
+                            <p class="field__error"></p>
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="userPhone">Contact number</label>
+                            <input class="input" type="text" id="userPhone" name="phone" placeholder="+92 300 1234567"
+                                autocomplete="off">
+                            <p class="field__error"></p>
                         </div>
                     </div>
-                </div>
 
+                    <div class="field">
+                        <label class="field__label" for="userEmail">Email address <span class="req">*</span></label>
+                        <input class="input" type="email" id="userEmail" name="email" placeholder="name@garrison.test"
+                            required autocomplete="off">
+                        <p class="field__error"></p>
+                    </div>
+
+                    <hr class="rule" style="margin: 26px 0 22px">
+
+                    <div class="field-row">
+                        <div class="field">
+                            <label class="field__label" for="userPassword">Password <span class="req">*</span></label>
+                            <input class="input" type="password" id="userPassword" name="password" required
+                                autocomplete="new-password">
+                            <p class="field__hint">At least 8 characters.</p>
+                            <p class="field__error"></p>
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="passwordConfirmation">Confirm password <span class="req">*</span></label>
+                            <input class="input" type="password" id="passwordConfirmation" name="password_confirmation"
+                                required autocomplete="new-password">
+                            <p class="field__error"></p>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <a href="{{ route('dashboard.users') }}" class="btn btn--ghost">Cancel</a>
+                        <button type="submit" class="btn btn--primary">
+                            <svg class="icon" aria-hidden="true"><use href="#i-user-plus"></use></svg>
+                            Create account
+                        </button>
+                    </div>
+                </form>
             </div>
-        </div>
-        </div>
-    @endsection
+        </section>
+
+        <aside class="panel">
+            <div class="panel__head">
+                <h2 class="panel__title">House Notes</h2>
+            </div>
+            <div class="panel__body">
+                <ul class="notes-list">
+                    <li>
+                        <svg class="icon" aria-hidden="true"><use href="#i-id-card"></use></svg>
+                        <span><strong>An account is a sign-in.</strong> It is not a client record — clients live in the ledger.</span>
+                    </li>
+                    <li>
+                        <svg class="icon" aria-hidden="true"><use href="#i-contact"></use></svg>
+                        <span><strong>Barbers need a barber record too.</strong> Add one afterwards so they can take appointments.</span>
+                    </li>
+                    <li>
+                        <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+                        <span><strong>Passwords are never shown.</strong> They are stored hashed and cannot be read back.</span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+@endsection

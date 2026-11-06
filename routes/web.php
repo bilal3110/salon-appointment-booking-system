@@ -33,7 +33,12 @@ Route::get('/admin-panel/users/{id}/edit',[DashboardController::class,'editUserP
 Route::get('/admin-panel/staff',[DashboardController::class,'addStaffPage'])->name('dashboard.staff');
 Route::get('/admin-panel/staff/{id}/view',[DashboardController::class,'viewStaffPage'])->name('dashboard.staff.view');
 Route::get('/admin-panel/staff/create',[DashboardController::class,'createStaffPage'])->name('dashboard.staff.create');
+Route::get('/admin-panel/staff/{id}/edit',[DashboardController::class,'editStaffPage'])->name('dashboard.staff.edit');
 Route::get('/admin-panel/bookings',[DashboardController::class,'getBookingsPage'])->name('dashboard.bookings');
+Route::get('/admin-panel/clients',[DashboardController::class,'clientsPage'])->name('dashboard.clients');
+Route::get('/admin-panel/testimonials',[DashboardController::class,'testimonialsPage'])->name('dashboard.testimonials');
+Route::get('/admin-panel/reports',[DashboardController::class,'reportsPage'])->name('dashboard.reports');
+Route::get('/admin-panel/settings',[DashboardController::class,'settingsPage'])->name('dashboard.settings');
 });
 
 Route::get('/admin-panel/login',[DashboardController::class,'loginPage'])->name('dashboard.login');

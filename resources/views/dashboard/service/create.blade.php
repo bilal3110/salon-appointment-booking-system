@@ -1,48 +1,111 @@
 @extends('dashboard.layout.main')
+
+@section('title', 'Add Service')
+@section('section-name', 'The House')
+@section('page-name', 'Add Service')
+
 @section('main-section')
 
-    <body>
-        <div class="d-flex" id="wrapper">
-            @include('dashboard.layout.side')
-            <div id="page-content-wrapper">
+    <div class="page-head">
+        <div>
+            <p class="eyebrow">The House</p>
+            <h1 class="page-title">Add a Service</h1>
+            <p class="page-lede">
+                A new entry appears on the public booking page the moment it is saved.
+            </p>
+        </div>
 
-                @include('dashboard.layout.nav')
-                <div class="row">
-                    <div class="col-12 p-5">
-                        <div class="card card-custom p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <h4 class="mb-4">Add New Services Here</h4>
-                            </div>
-                            <div class="table-responsive">
-                                <form id="create-service-form">
-                                    <div class="mb-3">
-                                        <label for="service-name" class="form-label">Service Name</label>
-                                        <input type="text" class="form-input" id="service-name" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="service-price" class="form-label">Service Price</label>
-                                        <input type="number" class="form-input" id="service-price" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="service-type" class="form-label">Service Type</label>
-                                        <select class="form-select" id="service-type" required>
-                                            <option value="" selected disabled>Select Type</option>
-                                            <option value="men">Men</option>
-                                            <option value="women">Women</option>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="service-type" class="form-label">Description</label>
-                                        <textarea class="form-input" id="service-description" rows="3" required></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Create Service</button>
-                                </form>
-                            </div>
+        <div class="page-head__actions">
+            <a href="{{ route('dashboard.services') }}" class="btn btn--ghost">
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"></use></svg>
+                Back to services
+            </a>
+        </div>
+    </div>
+
+    <div class="grid-2--even grid-2">
+
+        <section class="panel">
+            <div class="panel__head">
+                <div>
+                    <h2 class="panel__title">Service Details</h2>
+                    <p class="panel__sub">Everything a client needs to know before booking</p>
+                </div>
+            </div>
+
+            <div class="panel__body">
+                <form id="createServiceForm" novalidate>
+                    <div class="field">
+                        <label class="field__label" for="serviceName">Service name <span class="req">*</span></label>
+                        <input class="input" type="text" id="serviceName" name="service_name"
+                            placeholder="Hot towel shave" required autocomplete="off">
+                        <p class="field__error"></p>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field">
+                            <label class="field__label" for="serviceType">Service type <span class="req">*</span></label>
+                            <select class="select" id="serviceType" name="service_type" required>
+                                <option value="">Select type</option>
+                                <option value="men">Men</option>
+                                <option value="women">Women</option>
+                            </select>
+                            <p class="field__error"></p>
+                        </div>
+
+                        <div class="field">
+                            <label class="field__label" for="servicePrice">Price (PKR) <span class="req">*</span></label>
+                            <input class="input" type="number" id="servicePrice" name="price" min="0" step="1"
+                                placeholder="2500" required>
+                            <p class="field__error"></p>
                         </div>
                     </div>
-                </div>
 
+                    <div class="field">
+                        <label class="field__label" for="serviceDescription">Description</label>
+                        <textarea class="textarea" id="serviceDescription" name="description" rows="5"
+                            placeholder="What the client receives, in the house's own words."></textarea>
+                        <p class="field__hint">Shown on the public booking page.</p>
+                        <p class="field__error"></p>
+                    </div>
+
+                    <div class="form-actions">
+                        <a href="{{ route('dashboard.services') }}" class="btn btn--ghost">Cancel</a>
+                        <button type="submit" class="btn btn--primary">
+                            <svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>
+                            Create service
+                        </button>
+                    </div>
+                </form>
             </div>
-        </div>
-        </div>
-    @endsection
+        </section>
+
+        <aside class="panel">
+            <div class="panel__head">
+                <h2 class="panel__title">House Notes</h2>
+            </div>
+            <div class="panel__body">
+                <ul class="notes-list">
+                    <li>
+                        <svg class="icon" aria-hidden="true"><use href="#i-scissors"></use></svg>
+                        <span><strong>Type matters.</strong> It decides which list the service appears under on the public site.</span>
+                    </li>
+                    <li>
+                        <svg class="icon" aria-hidden="true"><use href="#i-banknote"></use></svg>
+                        <span><strong>Price is fixed.</strong> Every booking records this figure, and completed work counts towards revenue.</span>
+                    </li>
+                    <li>
+                        <svg class="icon" aria-hidden="true"><use href="#i-contact"></use></svg>
+                        <span><strong>Barbers are assigned next.</strong> Open the barber's record to attach this service to them.</span>
+                    </li>
+                    <li>
+                        <svg class="icon" aria-hidden="true"><use href="#i-inbox"></use></svg>
+                        <span><strong>Nothing is invented.</strong> The ledger only ever counts bookings that were genuinely made.</span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+@endsection

@@ -4,313 +4,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garison Dashboard - Login</title>
-    <link rel="shortcut icon" href="{{ asset('Frontend/assets/icon.png') }}" type="image/x-icon" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <style>
-        :root {
-            --primary: #0a0a0a;
-            --secondary: #d4c5a9;
-            --accent: #8b7355;
-            --highlight: #141414;
-            --text: #d4c5a9;
-            --text-muted: #a89168;
-            --border: #2a2520;
-            --footer-bg: #000;
-            --copyright: #6b5d4f;
-        }
+    <meta name="robots" content="noindex, nofollow">
+    <title>Management Office — The Garrison</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--primary);
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .login-card {
-            background: var(--highlight);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 50px 40px;
-            width: 100%;
-            max-width: 450px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .logo-section {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo {
-            width: 150px;
-        }
-
-        .logo img {
-            width: 100%;
-            display: block;
-        }
-
-        .logo-subtitle {
-            font-size: 14px;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-        }
-
-        .welcome-text {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .welcome-text h2 {
-            color: var(--secondary);
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-
-        .welcome-text p {
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            color: var(--text);
-            font-size: 14px;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 14px 16px;
-            background: var(--primary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-            font-size: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
-        }
-
-        .form-group input::placeholder {
-            color: var(--text-muted);
-        }
-
-        .forgot-password {
-            text-align: right;
-            margin-top: -15px;
-            margin-bottom: 25px;
-        }
-
-        .forgot-password a {
-            color: var(--accent);
-            font-size: 13px;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .forgot-password a:hover {
-            color: var(--secondary);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 14px;
-            background: var(--accent);
-            color: var(--text);
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-        }
-
-        .login-btn:hover {
-            background: var(--secondary);
-            color: var(--primary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 197, 169, 0.3);
-        }
-
-        .login-btn:active {
-            transform: translateY(0);
-        }
-
-        .divider {
-            display: flex;
-            align-items: center;
-            margin: 30px 0;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        .divider span {
-            padding: 0 15px;
-            color: var(--text-muted);
-            font-size: 13px;
-        }
-
-        .register-link {
-            text-align: center;
-            margin-top: 25px;
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        .register-link a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .register-link a:hover {
-            color: var(--secondary);
-        }
-
-        footer {
-            background: var(--footer-bg);
-            color: var(--copyright);
-            text-align: center;
-            padding: 20px;
-            font-size: 13px;
-            border-top: 1px solid var(--border);
-        }
-
-        @media (max-width: 480px) {
-            .login-card {
-                padding: 40px 25px;
-            }
-
-            .welcome-text h2 {
-                font-size: 20px;
-            }
-        }
-    </style>
+    <link rel="shortcut icon" href="{{ asset('Frontend/assets/icon.png') }}" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+    />
+    <link rel="stylesheet" href="{{ asset('dashboard/css/admin.css') }}">
 </head>
 
-<body>
-    <div class="container">
-        <div class="login-card">
-            <div class="logo-section">
-                <div class="logo">
-                    <img src="{{ asset('Frontend/assets/logo.png') }}" alt="The Garison Logo">
-                </div>
-                <div class="logo-subtitle">DASHBOARD</div>
-            </div>
+<body class="auth">
 
-            <div class="welcome-text">
-                <h2>Welcome Back</h2>
-                <p>Sign in to access your dashboard</p>
-            </div>
+    @include('dashboard.layout.icons')
 
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Enter your password" required
-                        minlength="8">
-                </div>
-
-                <button type="submit" class="login-btn">Sign In</button>
-            </form>
+    <aside class="auth__aside">
+        <div class="auth__mark">
+            <span class="auth__seal" aria-hidden="true">TG</span>
+            <span>
+                <p class="auth__wordmark">The Garrison</p>
+                <p class="auth__sub">Est. 1919 · Management Office</p>
+            </span>
         </div>
-    </div>
 
-    <footer>
-        <p>&copy; EST. 1919 — BY ORDER OF THE PEAKY BLINDERS</p>
-    </footer>
+        <div class="auth__claim">
+            <h1 class="auth__claim-title">Run the establishment like a gentleman.</h1>
+            <div class="auth__claim-rule"></div>
+            <p class="auth__claim-text">
+                The ledger behind every chair — appointments, clients, services and the takings, kept in
+                one quiet office.
+            </p>
+        </div>
+
+        <p class="auth__foot">By order of the proprietor</p>
+    </aside>
+
+    <main class="auth__main">
+        <div class="auth__card">
+            <p class="eyebrow">Management Office</p>
+            <h2 class="auth__title">Welcome back</h2>
+            <p class="auth__lede">Sign in to open the ledger.</p>
+
+            <div class="auth__alert" id="authAlert" role="alert">
+                <svg class="icon" aria-hidden="true"><use href="#i-circle-alert"></use></svg>
+                <span id="authAlertText"></span>
+            </div>
+
+            <form id="loginForm" novalidate>
+                <div class="field">
+                    <label class="field__label" for="email">Email address <span class="req">*</span></label>
+                    <input class="input" type="email" id="email" name="email" placeholder="name@garrison.test"
+                        required autocomplete="username" autofocus>
+                    <p class="field__error"></p>
+                </div>
+
+                <div class="field">
+                    <label class="field__label" for="password">Password <span class="req">*</span></label>
+                    <input class="input" type="password" id="password" name="password" placeholder="••••••••"
+                        required minlength="6" autocomplete="current-password">
+                    <p class="field__error"></p>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--lg btn--block" id="loginSubmit">
+                    <svg class="icon" aria-hidden="true"><use href="#i-lock"></use></svg>
+                    Sign in
+                </button>
+            </form>
+
+            <a class="auth__back" href="{{ route('frontend.index') }}">
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-left"></use></svg>
+                Back to the public site
+            </a>
+        </div>
+    </main>
 
     <script>
-        // LOGIN
-        document.getElementById('loginForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+        (function () {
+            'use strict';
 
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            var form = document.getElementById('loginForm');
+            var alertBox = document.getElementById('authAlert');
+            var alertText = document.getElementById('authAlertText');
+            var submit = document.getElementById('loginSubmit');
+            var csrf = document.querySelector('meta[name="csrf-token"]');
 
-            if (!email || !password) {
-                alert('Please fill in all fields');
-                return;
+            function showError(message) {
+                alertText.textContent = message;
+                alertBox.classList.add('is-visible');
             }
 
-            if (password.length < 6) {
-                alert('Password must be at least 6 characters');
-                return;
+            function clearError() {
+                alertBox.classList.remove('is-visible');
             }
 
-            try {
-                const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+            function fieldError(input, message) {
+                var wrapper = input.closest('.field');
+                if (!wrapper) {
+                    return;
+                }
+                wrapper.classList.add('has-error');
+                var slot = wrapper.querySelector('.field__error');
+                if (slot) {
+                    slot.innerHTML =
+                        '<svg class="icon" aria-hidden="true"><use href="#i-circle-alert"></use></svg>' +
+                        '<span>' + message + '</span>';
+                }
+            }
 
-                const response = await fetch('/api/login', {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                clearError();
+
+                var email = document.getElementById('email');
+                var password = document.getElementById('password');
+                var valid = true;
+
+                [email, password].forEach(function (input) {
+                    var wrapper = input.closest('.field');
+                    if (wrapper) {
+                        wrapper.classList.remove('has-error');
+                        var slot = wrapper.querySelector('.field__error');
+                        if (slot) {
+                            slot.innerHTML = '';
+                        }
+                    }
+                });
+
+                if (!email.value.trim()) {
+                    fieldError(email, 'Enter your email address.');
+                    valid = false;
+                } else if (!/^\S+@\S+\.\S+$/.test(email.value.trim())) {
+                    fieldError(email, 'That does not look like an email address.');
+                    valid = false;
+                }
+
+                if (!password.value) {
+                    fieldError(password, 'Enter your password.');
+                    valid = false;
+                } else if (password.value.length < 6) {
+                    fieldError(password, 'Password must be at least 6 characters.');
+                    valid = false;
+                }
+
+                if (!valid) {
+                    return;
+                }
+
+                submit.classList.add('is-busy');
+                submit.disabled = true;
+
+                fetch('/api/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken
+                        'X-CSRF-TOKEN': csrf ? csrf.content : ''
                     },
                     credentials: 'include',
                     body: JSON.stringify({
-                        email,
-                        password
+                        email: email.value.trim(),
+                        password: password.value
                     })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    console.log('Login successful!');
-                    window.location.href = '/admin-panel';
-                } else {
-                    alert(data.message || 'Invalid credentials');
-                }
-            } catch (error) {
-                console.error('Login error:', error);
-                alert('An error occurred. Please try again.');
-            }
-        });
+                })
+                    .then(function (response) {
+                        return response
+                            .json()
+                            .catch(function () {
+                                return {};
+                            })
+                            .then(function (data) {
+                                return { ok: response.ok, data: data };
+                            });
+                    })
+                    .then(function (result) {
+                        if (result.ok) {
+                            window.location.href = '/admin-panel';
+                            return;
+                        }
+                        submit.classList.remove('is-busy');
+                        submit.disabled = false;
+                        showError(result.data.message || 'Invalid credentials. Try again.');
+                    })
+                    .catch(function () {
+                        submit.classList.remove('is-busy');
+                        submit.disabled = false;
+                        showError('Something went wrong. Check your connection and try again.');
+                    });
+            });
+        })();
     </script>
-
 </body>
 
 </html>

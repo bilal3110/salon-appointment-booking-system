@@ -1,293 +1,128 @@
 @extends('frontend.layout.main')
+
+@section('title', 'Rate Us — The Garrison')
+
+@section('body-class', 'page-testimonial')
+
 @section('main-section')
-    <style>
-        .testimonial-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            flex: 1;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .testimonial-subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        .testimonial-form-section {
-            background: var(--highlight);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 40px;
-            margin-bottom: 60px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .testimonial-form-section h2 {
-            color: var(--secondary);
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-        }
-
-        .testimonial-form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        input[type="text"],
-        textarea {
-            width: 100%;
-            padding: 12px 16px;
-            background: var(--primary);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: var(--text);
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        input[type="text"]:focus,
-        textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .testimonial-rating-input {
-            display: flex;
-            gap: 10px;
-            flex-direction: row-reverse;
-            justify-content: flex-end;
-        }
-
-        .testimonial-rating-input input {
-            display: none;
-        }
-
-        .testimonial-rating-input label {
-            cursor: pointer;
-            font-size: 2rem;
-            color: var(--border);
-            transition: color 0.2s;
-        }
-
-        .testimonial-rating-input input:checked~label,
-        .testimonial-rating-input label:hover,
-        .testimonial-rating-input label:hover~label {
-            color: var(--accent);
-        }
-
-        .testimonial-btn {
-            background: var(--accent);
-            color: var(--text);
-            padding: 14px 32px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .testimonial-btn:hover {
-            background: var(--secondary);
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .testimonial-testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-testimonial-card {
-            background: var(--highlight);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 30px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .testimonial-testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(212, 197, 169, 0.1);
-        }
-
-        .testimonial-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-user-info h3 {
-            color: var(--secondary);
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-
-        .testimonial-profession {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        .testimonial-stars {
-            color: var(--accent);
-            font-size: 1.2rem;
-        }
-
-        .testimonial-review-text {
-            color: var(--text);
-            line-height: 1.8;
-            font-size: 1rem;
-        }
-
-        .testimonial-empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-        }
-
-        .testimonial-empty-state p {
-            font-size: 1.1rem;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .testimonial-form-section {
-                padding: 25px;
-            }
-
-            .testimonial-testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-
-    </head>
-
-    <body>
-        <div class="testimonial-container">
-
-            <a href="{{ route('frontend.index') }}" class="back-link">← Back to Home</a>
-
-            <div class="header">
-                <h1>Share Your Vibe</h1>
-                <p class="subtitle">Share your experience with us</p>
+    <section class="booking-hero">
+        <div class="shell booking-hero__inner">
+            <div class="section-head">
+                <p class="eyebrow">Letters of Credit</p>
+                <h1 class="display display--lg">
+                    Leave Your <span class="serif-em">Credit</span>
+                </h1>
+                <p class="lead">
+                    The house keeps a ledger of every guest's note. Write yours and it will be read
+                    before the morning shift.
+                </p>
             </div>
 
-            <div class="testimonial-form-section">
-                <h2>Submit Your Review</h2>
-
-                <form id="testimonial-form">
-                    <div class="testimonial-form-group">
-                        <label for="testimonial-name">Your Name *</label>
-                        <input type="text" id="testimonial-name" required placeholder="John Doe">
-                    </div>
-
-                    <div class="testimonial-form-group">
-                        <label for="testimonial-profession">Profession *</label>
-                        <input type="text" id="testimonial-profession" required placeholder="Software Engineer">
-                    </div>
-
-                    <div class="testimonial-form-group">
-                        <label for="testimonial-review">Your Review *</label>
-                        <textarea id="testimonial-review" required placeholder="Share your experience..."></textarea>
-                    </div>
-
-                    <div class="testimonial-form-group">
-                        <label>Rating *</label>
-
-                        <div class="testimonial-rating-input">
-                            <input type="radio" name="testimonial-rating" id="testimonial-star5" value="5" required>
-                            <label for="testimonial-star5">★</label>
-
-                            <input type="radio" name="testimonial-rating" id="testimonial-star4" value="4">
-                            <label for="testimonial-star4">★</label>
-
-                            <input type="radio" name="testimonial-rating" id="testimonial-star3" value="3">
-                            <label for="testimonial-star3">★</label>
-
-                            <input type="radio" name="testimonial-rating" id="testimonial-star2" value="2">
-                            <label for="testimonial-star2">★</label>
-
-                            <input type="radio" name="testimonial-rating" id="testimonial-star1" value="1">
-                            <label for="testimonial-star1">★</label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="testimonial-btn">Submit Review</button>
-                </form>
+            <div class="booking-hero__meta">
+                <div class="booking-hero__meta-item">
+                    Entries kept
+                    <strong>Open ledger</strong>
+                </div>
+                <div class="booking-hero__meta-item">
+                    Published
+                    <strong>With your name</strong>
+                </div>
             </div>
         </div>
-        <script>
-            // Store API
-            async function submitTestimonial(testimonialData) {
-                try {
-                    const response = await fetch('{{ route('testimonials.store') }}', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        body: JSON.stringify(testimonialData)
-                    });
+    </section>
 
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
+    <section class="section">
+        <div class="shell contact">
+            <div class="contact__details">
+                <form class="steps" id="testimonial-form" novalidate>
+                    <section class="step">
+                        <header class="step__head">
+                            <span class="step__num">01</span>
+                            <h2 class="step__title">Your Note</h2>
+                        </header>
 
-                    return await response.json();
-                } catch (error) {
-                    console.error('Error submitting testimonial:', error);
-                    throw error;
-                }
-            }
-            // Handle Form Submission
-            document.getElementById('testimonial-form').addEventListener('submit', async function (e) {
-                e.preventDefault();
-                const name = document.getElementById('testimonial-name').value.trim();
-                const profession = document.getElementById('testimonial-profession').value.trim();
-                const review = document.getElementById('testimonial-review').value.trim();
-                const rating = document.querySelector('input[name="testimonial-rating"]:checked').value;
-                const testimonialData = {
-                    name: name,
-                    user_profession: profession,
-                    message: review,
-                    rating: parseInt(rating)
-                };
-                try {
-                    await submitTestimonial(testimonialData);
-                    alert('Thank you for your review!');
-                    document.getElementById('testimonial-form').reset();
-                } catch (error) {
-                    alert('There was an error submitting your review. Please try again later.');
-                }
-            });
-        </script>
-    @endsection
+                        <div class="step__body">
+                            <div class="field">
+                                <label class="field__label" for="testimonial-name">
+                                    Your name <span class="req" aria-hidden="true">*</span>
+                                </label>
+                                <input
+                                    class="field__control"
+                                    type="text"
+                                    id="testimonial-name"
+                                    name="name"
+                                    autocomplete="name"
+                                    required
+                                    placeholder="As it should appear in the ledger"
+                                />
+                            </div>
+
+                            <div class="field">
+                                <label class="field__label" for="testimonial-profession">
+                                    Occupation <span class="req" aria-hidden="true">*</span>
+                                </label>
+                                <input
+                                    class="field__control"
+                                    type="text"
+                                    id="testimonial-profession"
+                                    name="user_profession"
+                                    required
+                                    placeholder="Merchant, clerk, engineer&hellip;"
+                                />
+                            </div>
+
+                            <div class="field">
+                                <label class="field__label" for="testimonial-review">
+                                    Your credit <span class="req" aria-hidden="true">*</span>
+                                </label>
+                                <textarea
+                                    class="field__control"
+                                    id="testimonial-review"
+                                    name="message"
+                                    rows="5"
+                                    required
+                                    placeholder="How was the chair, the cut, the hour?"
+                                ></textarea>
+                            </div>
+
+                            <div class="field">
+                                <span class="field__label" id="rating-label">
+                                    Rating <span class="req" aria-hidden="true">*</span>
+                                </span>
+                                <div class="rating-input" role="radiogroup" aria-labelledby="rating-label">
+                                    <input type="radio" name="testimonial-rating" id="star5" value="5" required />
+                                    <label for="star5" aria-label="5 stars">&#9733;</label>
+                                    <input type="radio" name="testimonial-rating" id="star4" value="4" />
+                                    <label for="star4" aria-label="4 stars">&#9733;</label>
+                                    <input type="radio" name="testimonial-rating" id="star3" value="3" />
+                                    <label for="star3" aria-label="3 stars">&#9733;</label>
+                                    <input type="radio" name="testimonial-rating" id="star2" value="2" />
+                                    <label for="star2" aria-label="2 stars">&#9733;</label>
+                                    <input type="radio" name="testimonial-rating" id="star1" value="1" />
+                                    <label for="star1" aria-label="1 star">&#9733;</label>
+                                </div>
+                            </div>
+
+                            <div id="testimonialMessage" role="status" aria-live="polite"></div>
+
+                            <button class="btn btn--gold" type="submit" id="testimonialSubmit">
+                                Submit the Credit
+                            </button>
+                        </div>
+                    </section>
+                </form>
+            </div>
+
+            <div>
+                <h2 class="subhead">The Ledger</h2>
+                <div class="credits" id="creditsList" aria-live="polite" aria-busy="true">
+                    <div class="state">
+                        <span class="state__mark">&hellip;</span>
+                        <span class="state__title">Opening the ledger</span>
+                        <span class="state__text">Fetching the guests&rsquo; notes&hellip;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
