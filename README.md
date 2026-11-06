@@ -1,120 +1,159 @@
-# Salon Garison - Salon Management System
+# The Garrison
 
-**Salon Garison** is a modern, comprehensive Salon Management System built using the Laravel framework. It is designed to streamline salon operations by providing an intuitive interface for clients to book appointments and an efficient dashboard for administrators to manage services, staff, and bookings.
+**A grooming house with an appointment book, not a waiting room.**
 
----
+The Garrison is a salon appointment-booking and operations app styled as a private grooming society in Lyallpur. Its public-facing experience takes cues from a heritage barbershop: editorial typography, warm walnut and oxblood tones, brass-like accents, craft-focused photography, and the language of a handwritten appointment ledger. Underneath the atmosphere is a practical workflow for choosing a service, matching it with an artisan, selecting a date and time, and managing the salon's day-to-day appointments.
 
-## 🚀 Features
+## The problem
 
-### **Frontend (Client Side)**
-- **Online Booking:** A user-friendly booking system allowing clients to schedule appointments seamlessly.
-- **Testimonials:** A section for clients to view and share their experiences.
-- **Service Catalog:** Detailed overview of the services offered by the salon.
-- **Responsive Design:** Optimized for a great experience across all devices.
+Salon appointments can end up scattered across phone calls, messages, paper diaries, and staff members' personal notes. That makes it harder for customers to understand the services and prices, choose the right person, and request a suitable time. It also leaves salon teams without one clear view of bookings, staff, and the service menu.
 
-### **Admin Dashboard**
-- **Overview Statistics:** A quick glance at total services, staff members, and pending bookings.
-- **Booking Management:** Track and manage client appointments efficiently.
-- **Staff Management:** Full CRUD operations for managing salon staff and assigning them to services.
-- **Service Management:** Add, edit, or remove salon services and pricing.
-- **User Management:** Secure access control for administrators and staff.
+## How The Garrison helps
 
----
+- **A clear place to start:** Customers can explore the salon, its services, prices, and testimonials before making an appointment.
+- **A guided booking journey:** Customers select a treatment and an artisan, choose a date and time, and submit their contact details.
+- **A connected service and staff list:** The booking experience can show which artisans provide a selected service.
+- **One operational dashboard:** Authenticated salon users can review bookings and manage services, staff, and user accounts. Admins can view salon-wide bookings; staff users see their own bookings.
+- **A consistent house identity:** The heritage-inspired presentation gives the booking experience and salon operations a recognizable, polished voice.
 
-## 🛠️ Technology Stack
+## What you can do
 
-- **Backend:** [Laravel 10](https://laravel.com/) (PHP ^8.1)
-- **Frontend:** Blade Templating, Vanilla CSS, JavaScript
+### For customers
+
+- Browse the salon's service catalog and prices.
+- Request an appointment by service, staff member, date, and time.
+- Read and submit salon testimonials.
+
+### For salon staff and administrators
+
+- Review booking statuses and customer details.
+- Add and edit services and prices.
+- Manage staff profiles and the services each staff member offers.
+- Manage user accounts and review client and testimonial information.
+- See a dashboard overview of services, staff, and pending bookings.
+
+## Technology
+
+- **Backend:** PHP 8.1+ and Laravel 10
 - **Database:** MySQL
-- **Asset Management:** [Vite](https://vitejs.dev/)
-- **Authentication:** Laravel Sanctum
+- **Views:** Laravel Blade
+- **Frontend:** HTML, CSS, and vanilla JavaScript
+- **Assets:** Vite with the Laravel Vite plugin
+- **Authentication and API support:** Laravel session authentication and Sanctum
+- **Test and development tools:** PHPUnit, Faker, and Laravel Tinker
 
----
+## Requirements
 
-## ⚙️ Local Setup Instructions
+Install the following before setting up the project:
 
-Follow these steps to set up the project on your local machine:
+- PHP 8.1 or later, with the PHP extensions required by Laravel and the MySQL PDO driver
+- [Composer](https://getcomposer.org/)
+- [Node.js and npm](https://nodejs.org/)
+- MySQL
 
-### **1. Prerequisites**
-Ensure you have the following installed:
-- **PHP** (>= 8.1)
-- **Composer**
-- **Node.js & NPM**
-- **MySQL** (or any supported database)
+## Install and run locally
 
-### **2. Clone the Repository**
+### 1. Get the code and install dependencies
+
 ```bash
 git clone https://github.com/bilal3110/salon-appointment-booking-system.git
-cd Salon-Garison
-```
-
-### **3. Install PHP Dependencies**
-```bash
+cd salon-appointment-booking-system
 composer install
-```
-
-### **4. Install Frontend Dependencies**
-```bash
 npm install
 ```
 
-### **5. Environment Configuration**
-Copy the example environment file and generate the application key:
+### 2. Configure the environment
+
+Create a local `.env` file from the example:
+
 ```bash
 cp .env.example .env
+```
+
+On Windows PowerShell, use:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Generate the application key:
+
+```bash
 php artisan key:generate
 ```
 
-### **6. Database Setup**
-1. Create a new database in your database manager (e.g., PHPMyAdmin or MySQL CLI).
-2. Open the `.env` file and update the database configuration:
-   ```env
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=your_database_name
-   DB_USERNAME=your_database_username
-   DB_PASSWORD=your_database_password
-   ```
+### 3. Create and configure a database
 
-### **7. Create the Tables and Demo Data**
-Run migrations and seed the database with example services, staff, bookings, testimonials, and a demo admin account:
-```bash
-php artisan migrate --seed
+Create an empty MySQL database, then set its connection details in `.env`:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=salon
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
-### **8. Storage Link**
-Link the storage directory to the public directory to enable file uploads:
+Use the database name, user, and password configured for your own MySQL installation.
+
+### 4. Create tables and load demo data
+
 ```bash
+php artisan migrate --seed
 php artisan storage:link
 ```
 
-Demo admin login:
+The demo seeder adds sample services, staff, bookings, testimonials, and an administrator account. It is safe to run again to fill in missing demo entries without clearing the database:
+
+```bash
+php artisan db:seed
+```
+
+Demo administrator:
+
 - **Email:** `admin@salon.test`
 - **Password:** `password`
 
-To add the demo records again later without clearing existing data, run `php artisan db:seed`.
+This is a local testing account. Change or remove it before deploying the application.
 
-### **9. Launch the Application**
-Start the Laravel development server:
+### 5. Start the application
+
+Run Laravel in one terminal:
+
 ```bash
 php artisan serve
 ```
-In a separate terminal, run the asset bundler:
+
+Run Vite in another terminal:
+
 ```bash
 npm run dev
 ```
 
-### **10. Access the App**
-- **Frontend:** [http://127.0.0.1:8000](http://127.0.0.1:8000)
-- **Admin Panel:** [http://127.0.0.1:8000/admin-panel/login](http://127.0.0.1:8000/admin-panel/login)
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
----
+## Useful URLs
 
-## 🛡️ Security
-If you discover any security-related issues, please use the issue tracker or contact the maintainers directly.
+- **Salon website:** [http://127.0.0.1:8000](http://127.0.0.1:8000)
+- **Appointment booking:** [http://127.0.0.1:8000/booking](http://127.0.0.1:8000/booking)
+- **Testimonials:** [http://127.0.0.1:8000/testimonial](http://127.0.0.1:8000/testimonial)
+- **Admin login:** [http://127.0.0.1:8000/admin-panel/login](http://127.0.0.1:8000/admin-panel/login)
 
----
+## Development
 
-## 📄 License
-This project is open-sourced software licensed under the [MIT license](LICENSE).
+Build production frontend assets with:
+
+```bash
+npm run build
+```
+
+Run the automated test suite with:
+
+```bash
+php artisan test
+```
+
+## License
+
+This project is open-source software licensed under the [MIT License](LICENSE).
